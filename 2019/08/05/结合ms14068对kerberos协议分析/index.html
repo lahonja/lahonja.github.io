@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="测试,">
+  <meta name="keywords" content="Windows,漏洞分析,协议分析,">
 
 
 
@@ -79,18 +79,26 @@
 
 
 
-<meta name="description" content="博客搭建步骤1234567## 安装相关软件环境1. [下载并安装Ruby With DEVKIT](https://rubyinstaller.org/downloads/)    在安装完成后，会提示安装组建，这里选择3    ![](1.png)    安装完成之后，执行*gem install jekyll bundler*安装相关组件    ```参考文档：https://jekyllr">
-<meta name="keywords" content="测试">
+<meta name="description" content="Kerberos协议介绍什么是SSPI&amp;emsp;安全支持提供者接口（英语：Security Support Provider Interface，缩写SSPI）是Microsoft Windows操作系统中用于执行各种安全相关操作（如身份验证）的一个Win32 API。&amp;emsp;SSPI的功能是作为众多安全支持提供程序（SSP）的通用接口：安全支持提供者（Security Support Pr">
+<meta name="keywords" content="Windows,漏洞分析,协议分析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="结合ms14068对kerberos协议分析">
 <meta property="og:url" content="https://lahonja.github.io/2019/08/05/结合ms14068对kerberos协议分析/index.html">
 <meta property="og:site_name" content="记录和分享网络安全知识">
-<meta property="og:description" content="博客搭建步骤1234567## 安装相关软件环境1. [下载并安装Ruby With DEVKIT](https://rubyinstaller.org/downloads/)    在安装完成后，会提示安装组建，这里选择3    ![](1.png)    安装完成之后，执行*gem install jekyll bundler*安装相关组件    ```参考文档：https://jekyllr">
+<meta property="og:description" content="Kerberos协议介绍什么是SSPI&amp;emsp;安全支持提供者接口（英语：Security Support Provider Interface，缩写SSPI）是Microsoft Windows操作系统中用于执行各种安全相关操作（如身份验证）的一个Win32 API。&amp;emsp;SSPI的功能是作为众多安全支持提供程序（SSP）的通用接口：安全支持提供者（Security Support Pr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-05T06:15:59.998Z">
+<meta property="og:image" content="https://lahonja.github.io/2019/08/05/结合ms14068对kerberos协议分析/1.jpeg">
+<meta property="og:image" content="https://lahonja.github.io/2019/08/05/结合ms14068对kerberos协议分析/2.png">
+<meta property="og:image" content="https://lahonja.github.io/2019/08/05/结合ms14068对kerberos协议分析/kerberos_detail.png">
+<meta property="og:image" content="https://lahonja.github.io/2019/08/05/结合ms14068对kerberos协议分析/3-1.png">
+<meta property="og:image" content="https://lahonja.github.io/2019/08/05/结合ms14068对kerberos协议分析/3-2.png">
+<meta property="og:image" content="https://lahonja.github.io/2019/08/05/结合ms14068对kerberos协议分析/3-3.png">
+<meta property="og:image" content="https://lahonja.github.io/2019/08/05/结合ms14068对kerberos协议分析/3-4.png">
+<meta property="og:updated_time" content="2019-08-05T09:54:57.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="结合ms14068对kerberos协议分析">
-<meta name="twitter:description" content="博客搭建步骤1234567## 安装相关软件环境1. [下载并安装Ruby With DEVKIT](https://rubyinstaller.org/downloads/)    在安装完成后，会提示安装组建，这里选择3    ![](1.png)    安装完成之后，执行*gem install jekyll bundler*安装相关组件    ```参考文档：https://jekyllr">
+<meta name="twitter:description" content="Kerberos协议介绍什么是SSPI&amp;emsp;安全支持提供者接口（英语：Security Support Provider Interface，缩写SSPI）是Microsoft Windows操作系统中用于执行各种安全相关操作（如身份验证）的一个Win32 API。&amp;emsp;SSPI的功能是作为众多安全支持提供程序（SSP）的通用接口：安全支持提供者（Security Support Pr">
+<meta name="twitter:image" content="https://lahonja.github.io/2019/08/05/结合ms14068对kerberos协议分析/1.jpeg">
 
 
 
@@ -305,8 +313,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
-                    <span itemprop="name">web前端</span>
+                  <a href="/categories/内网渗透/" itemprop="url" rel="index">
+                    <span itemprop="name">内网渗透</span>
                   </a>
                 </span>
 
@@ -342,14 +350,70 @@
       
 
       
-        <h1 id="博客搭建步骤"><a href="#博客搭建步骤" class="headerlink" title="博客搭建步骤"></a>博客搭建步骤</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 安装相关软件环境</span><br><span class="line">1. [下载并安装Ruby With DEVKIT](https://rubyinstaller.org/downloads/)</span><br><span class="line">    在安装完成后，会提示安装组建，这里选择3</span><br><span class="line">    ![](1.png)</span><br><span class="line">    安装完成之后，执行*gem install jekyll bundler*安装相关组件</span><br><span class="line">    ```参考文档：https://jekyllrb.com/docs/installation/windows/</span><br></pre></td></tr></table></figure>
-
+        <h2 id="Kerberos协议介绍"><a href="#Kerberos协议介绍" class="headerlink" title="Kerberos协议介绍"></a>Kerberos协议介绍</h2><h3 id="什么是SSPI"><a href="#什么是SSPI" class="headerlink" title="什么是SSPI"></a>什么是SSPI</h3><p>&emsp;安全支持提供者接口（英语：Security Support Provider Interface，缩写SSPI）是Microsoft Windows操作系统中用于执行各种安全相关操作（如身份验证）的一个Win32 API。<br>&emsp;SSPI的功能是作为众多安全支持提供程序（SSP）的通用接口：安全支持提供者（Security Support Provider）是可以为应用程序提供一种或多种安全功能包的动态链接库（dynamic-link library）。</p>
+<h3 id="Windows常用的SSP"><a href="#Windows常用的SSP" class="headerlink" title="Windows常用的SSP"></a>Windows常用的SSP</h3><ul>
+<li>NTLM（Windows NT 3.51中引入）(msv1_0.dll) - 为Windows 2000之前的客户端-服务器域和非域身份验证（SMB/CIFS）提供NTLM质询/响应身份验证。</li>
+<li>Kerberos（Windows 2000中引入，Windows Vista中更新为支持AES）(kerberos.dll) - Windows 2000及更高版本中首选的客户端-服务器域相互身份验证。</li>
+<li>Negotiate（Windows 2000中引入）(secur32.dll) - Negotiate安全包在Kerberos和NTLM之间进行选择协商选择。Negotiate默认使用Kerberos，当Kerberos不能被身份验证中涉及的某个系统使用时，将使用NTLM。</li>
+<li>摘要SSP（Windows XP中引入）(wdigest.dll) - 在Windows与Kerberos不可用的非Windows系统间提供基于HTTP和SASL身份验证的质询/响应。</li>
+<li>凭据 (CredSSP)（Windows Vista中引入，Windows XP SP3上也可用）(credssp.dll) - 为远程桌面连接提供单点登录（SSO）和网络级身份验证。</li>
+</ul>
+<blockquote>
+<p>参考： <a href="https://zh.wikipedia.org/wiki/SSPI" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/SSPI</a></p>
+</blockquote>
+<h3 id="Kerberos形象化理解"><a href="#Kerberos形象化理解" class="headerlink" title="Kerberos形象化理解"></a>Kerberos形象化理解</h3><p>&emsp;Kerberos协议中主要涉及到Client、AS（也被称为KDC）、TGS、SS。我们形象化到我们的生活中，可以分别理解为4个主体：张三（Client）、公安局（AS）、房管局（TGS）、售楼部（SS）。<br>&emsp;这里以买房子为例，张三到售楼部买房子，但是售楼部是需要张三提供房管局签发的允许购房证明；张三到了房管局，但是房管局为了确认张三的身份，需要张三到公安局开一张个人身份证明（ <strong>公安局为了这个证明不用做其他用途，将这个证明加了密的，只有公安局能够解开；想要查验这个证明是否有效，需要房管局向公安局查验</strong> ）。当然上述流程是一个逆向去开证明的流程，为了不多跑路，这个流程一开始就是公开的。所以正常的步骤应该是：</p>
 <ol>
-<li>在Github上创建一个仓库，仓库名设置为<em>Github-Username.github.io</em></li>
-<li><a href="https://codeload.github.com/kitian616/jekyll-TeXt-theme/zip/master" target="_blank" rel="noopener">下载jekyll-TeXt-theme主题包</a></li>
-<li>将主题包的文件同步到仓库中</li>
+<li>张三到公安局开身份证明（Client-&gt;AS）</li>
+<li>公安局给张三签发只公安局能看懂的身份证明（AS-&gt;Client，TGT票据）</li>
+<li>张三拿着公安局给的证明去房管局开允许购房证明 （Client-&gt;TGS）</li>
+<li>房管局给张三签发只有房管局能看懂的允许购房证明 （TGS-&gt;Client，ST票据）</li>
+<li>张三拿着房管局的允许购房证明去售楼部买房（Client-&gt;SS）</li>
+<li>售楼部向房管局查验证明通过后，张三就可以买房了（SS-&gt;Client）</li>
 </ol>
+<h3 id="Kerberos协议具体介绍"><a href="#Kerberos协议具体介绍" class="headerlink" title="Kerberos协议具体介绍"></a>Kerberos协议具体介绍</h3><p>&emsp;Authentication Server： AS的作用就是验证Client端的身份（确定你是身份证上的本人），验证通过就会给一张TGT（Ticket Granting Ticket）票给Client。<br>&emsp;Ticket Granting Server： TGS的作用是通过AS发送给Client的票（TGT）换取访问Server端的票（ST）。ST（Service Ticket）也有资料称为TGS Ticket。</p>
+<p>&emsp;Kerberos认证流程简化如下（<a href="https://medium.com/@robert.broeckelmann/kerberos-wireshark-captures-a-windows-login-example-151fabf3375a" target="_blank" rel="noopener">数据包具体数据看这里</a>）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">1. KRB_AS_REQ</span><br><span class="line">    Client -&gt; Server(AS) 认证服务</span><br><span class="line">    Message0: </span><br><span class="line">        加密: client_secret_key</span><br><span class="line">        数据: Realm,principal,IP,Pre-authentication data...</span><br><span class="line">        </span><br><span class="line">2. KRB_AS_RSP</span><br><span class="line">    Server(AS) 认证服务 -&gt; Client</span><br><span class="line">    Message1: </span><br><span class="line">        加密: client_secret_key</span><br><span class="line">        数据: TGS name,TGS_session_key</span><br><span class="line">    Message2(访问TGS的票据TGT): Client解密不了</span><br><span class="line">        加密: TGS_secret_key(krbtgt_hash)</span><br><span class="line">        数据: Username,TGS Name,TGS_session_key...</span><br><span class="line">        </span><br><span class="line">3. KRB_TGS_REQ</span><br><span class="line">    Client -&gt; Server(TGS) 票据授权服务</span><br><span class="line">    Message3: Client解密不了</span><br><span class="line">        加密: 由上一步服务端使用 TGS_secret_key(krbtgt_hash) 加密</span><br><span class="line">        数据: 直接转发Message2(访问TGS的票据TGT)</span><br><span class="line">    Message4:</span><br><span class="line">        加密: TGS_session_key</span><br><span class="line">        数据: authenticator</span><br><span class="line">        </span><br><span class="line">4. KRB_TGS_RSP</span><br><span class="line">    Server(TGS) 认证服务 -&gt; Client</span><br><span class="line">    Message5(访问SS的票据ST): Client解密不了</span><br><span class="line">        加密: Service_Secret_Key</span><br><span class="line">        数据: Service_Session_Key</span><br><span class="line">    Message6:</span><br><span class="line">        加密: TGS_session_key</span><br><span class="line">        数据: Service_Session_Key</span><br><span class="line">        </span><br><span class="line">5. KRB_AP_REQ</span><br><span class="line">    Client -&gt; Server(SS) 应用服务</span><br><span class="line">    Message5(访问SS的票据ST): Client解密不了</span><br><span class="line">        加密: Service_Secret_Key</span><br><span class="line">        数据: Username,Service Name,Service_Session_Key</span><br><span class="line">    Message7:</span><br><span class="line">        加密: Service_Session_Key</span><br><span class="line">        数据: authenticator</span><br><span class="line">        </span><br><span class="line">6. KRB_AP_RSP</span><br><span class="line">    Server(SS) 应用服务 -&gt; Client</span><br><span class="line">    Message8:</span><br><span class="line">        加密方式: Service_Session_Key</span><br><span class="line">        数据: authenticator</span><br></pre></td></tr></table></figure>
 
+<p>下面是三张认证的流程图：<br><img src="1.jpeg" alt="认证流程图"><br><img src="2.png" alt="认证流程图"><br><img src="kerberos_detail.png" alt="认证流程图"></p>
+<h2 id="黄金票据"><a href="#黄金票据" class="headerlink" title="黄金票据"></a>黄金票据</h2><h3 id="什么是TGT票据"><a href="#什么是TGT票据" class="headerlink" title="什么是TGT票据"></a>什么是TGT票据</h3><p>&emsp;TGT票据，ticket-granting-tickets，是客户端通过身份认证服务器(AS/KDC)的认证之后，AS签发给Client的一个身份票据，可以使用这个凭据访问其他服务（TGS要检查这个TGT是否拥有将要访问服务的权限）。通过windows自带命令<a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/klist" target="_blank" rel="noopener">klist</a>，可以查看本机缓存的TGT票据，或者使用<a href="https://gallery.technet.microsoft.com/List-All-Cached-Kerberos-5ba41829" target="_blank" rel="noopener">这个Powershell脚本</a>来查看本机的票据。结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">Kerberos Tickets for LogonID 0x74bba</span><br><span class="line">*****************************</span><br><span class="line">Logon Type: 5</span><br><span class="line">Session ID: 0x74bba</span><br><span class="line">Auth Method: Kerberos</span><br><span class="line">Current LogonId is 0:0x21957b6</span><br><span class="line">Targeted LogonId is 0:0x74bba</span><br><span class="line">Cached TGT:</span><br><span class="line">ServiceName : krbtgt</span><br><span class="line">TargetName (SPN) : krbtgt</span><br><span class="line">ClientName : adfs</span><br><span class="line">DomainName : RCBJ.NET</span><br><span class="line">TargetDomainName : RCBJ.NET</span><br><span class="line">AltTargetDomainName: RCBJ.NET</span><br><span class="line">Ticket Flags : 0x40e10000 -&gt; forwardable renewable initial pre_authent name_canonicalize</span><br><span class="line">Session Key : KeyType 0x12 — AES-256-CTS-HMAC-SHA1–96</span><br><span class="line"> : KeyLength 32–25 2b a5 21 cb 56 5f f1 f6 ad e9 35 73 7b 31 06 2e e8 8e 67 f7 bb 9f 24 a7 a5 50 fd</span><br><span class="line">d8 d0 43 48</span><br><span class="line">StartTime : 9/6/2018 23:23:25 (local)</span><br><span class="line">EndTime : 9/7/2018 9:23:25 (local)</span><br><span class="line">RenewUntil : 9/9/2018 2:27:40 (local)</span><br><span class="line">TimeSkew : + 0:00 minute(s)</span><br><span class="line">EncodedTticket : (size: 1003)</span><br><span class="line">0000 61 82 03 e7 30 82 03 e3:a0 03 02 01 05 a1 0a 1b a…0………..</span><br><span class="line">0010 08 52 43 42 4a 2e 4e 45:54 a2 1d 30 1b a0 03 02 .RCBJ.NET..0….</span><br><span class="line">0020 01 02 a1 14 30 12 1b 06:6b 72 62 74 67 74 1b 08 ….0…krbtgt..</span><br><span class="line">0030 52 43 42 4a 2e 4e 45 54:a3 82 03 af 30 82 03 ab RCBJ.NET….0…</span><br><span class="line">0040 a0 03 02 01 12 a1 03 02:01 02 a2 82 03 9d 04 82 …………….</span><br><span class="line">0050 03 99 6f 06 82 a8 18 3f:60 c7 b2 b7 2a 2b 18 e5 ..o….?`…*+..</span><br><span class="line">Ticket #0 : @&#123;Client=adfs @ RCBJ.NET; Server=krbtgt/RCBJ.NET @ RCBJ.NET; KerbTicket Encryption</span><br><span class="line"> Type=AES-256-CTS-HMAC-SHA1–96; Ticket Flags=0x40e10000 -&gt; forwardable renewable initial pre_authent</span><br><span class="line"> name_canonicalize ; Start Time=9/6/2018 23:23:25 (local); End Time=9/7/2018 9:23:25 (local); Renew</span><br><span class="line"> Time=9/9/2018 2:27:40 (local); Session Key Type=AES-256-CTS-HMAC-SHA1–96&#125;</span><br><span class="line">Ticket #1 : @&#123;Client=adfs @ RCBJ.NET; Server=krbtgt/RCBJ.NET @ RCBJ.NET; KerbTicket Encryption</span><br><span class="line"> Type=AES-256-CTS-HMAC-SHA1–96; Ticket Flags=0x60a10000 -&gt; forwardable forwarded renewable pre_authent</span><br><span class="line"> name_canonicalize ; Start Time=9/2/2018 2:27:49 (local); End Time=9/2/2018 12:27:40 (local); Renew</span><br><span class="line"> Time=9/9/2018 2:27:40 (local); Session Key Type=AES-256-CTS-HMAC-SHA1–96&#125;</span><br><span class="line">Ticket #2 : @&#123;Client=adfs @ RCBJ.NET; Server=ldap/EC2AMAZ-A6G81N3.rcbj.net @ RCBJ.NET; KerbTicket Encryption</span><br><span class="line"> Type=AES-256-CTS-HMAC-SHA1–96; Ticket Flags=0x40a50000 -&gt; forwardable renewable pre_authent ok_as_delegate</span><br><span class="line"> name_canonicalize ; Start Time=9/7/2018 1:38:28 (local); End Time=9/7/2018 9:23:25 (local); Renew</span><br><span class="line"> Time=9/9/2018 2:27:40 (local); Session Key Type=AES-256-CTS-HMAC-SHA1–96&#125;</span><br><span class="line">Ticket #3 : @&#123;Client=adfs @ RCBJ.NET; Server=ldap/EC2AMAZ-A6G81N3.rcbj.net/rcbj.net @ RCBJ.NET; KerbTicket Encryption</span><br><span class="line"> Type=AES-256-CTS-HMAC-SHA1–96; Ticket Flags=0x40a50000 -&gt; forwardable renewable pre_authent ok_as_delegate</span><br><span class="line"> name_canonicalize ; Start Time=9/6/2018 23:28:02 (local); End Time=9/7/2018 9:23:25 (local); Renew</span><br><span class="line"> Time=9/9/2018 2:27:40 (local); Session Key Type=AES-256-CTS-HMAC-SHA1–96&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="黄金票据原理"><a href="#黄金票据原理" class="headerlink" title="黄金票据原理"></a>黄金票据原理</h3><p>&emsp;Golden Ticket（下面称为黄金票据）是伪造的TGT（Ticket Granting Ticket），因为只要有了高权限的TGT，那么就可以发送给TGS换取任意服务的ST。通过前面的分析，认识到TGT是AS签发给Client的，并且是使用AS的用户密码hash进行加密（在域中默认为krbtgt）；所以只要知道了krbtgt账号密码的hash，就可以进行任意票据伪造。<br>&emsp;当用户与AS(KDC)之间完成了认证过程之后， Client需要访问Server所提供的某项服务时， Server为了判断用户是否具有合法的权限需要将Client的User SID等信息传递给AS(KDC)， AS(KDC)通过SID判断用户的用户组信息， 用户权限等， 进而将结果返回给Server， Server再将此信息与用户所索取的资源的ACL进行比较， 最后决定是否给用户提供相应的服务。<br>&emsp;认识了上述票据的权限认证原理后，我们知道票据的权限主要是取决于票据中保存的用户的SID，因为AS判断权限时，时通过票据中用户的SID进行判断的。<strong>SID的末尾为RID，是域用户的唯一对象标识，通过这点，我们可以将任意用户伪造成域管理员或者其他高权限账号。</strong><a href="https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-dtyp/81d92bba-d22b-4a8c-908a-554ab29148ab" target="_blank" rel="noopener">点击这里查看常见SID含义</a>。</p>
+<ul>
+<li>ADMINISTRATOR SID：S-1-5-21 <domainid> -500</domainid></li>
+<li>管理员组：S-1-5-21-DOMAINID-513</li>
+<li>域用户SID：S-1-5-21-DOMAINID-513</li>
+<li>域管理员SID：S-1-5-21-DOMAINID-512</li>
+<li>架构管理员SID：S-1-5-21-DOMAINID-518</li>
+<li>企业管理员SID：S-1-5-21-DOMAINID-519（只有在森林根域中创建伪造票证时才有效，但为AD森林管理员权限添加使用/ sids参数）</li>
+<li>组策略创建者所有者SID：S-1-5-21 <domainid> -520</domainid></li>
+</ul>
+<h3 id="黄金票据伪造条件"><a href="#黄金票据伪造条件" class="headerlink" title="黄金票据伪造条件"></a>黄金票据伪造条件</h3><ul>
+<li>域名称</li>
+<li>域SID值，注意是去掉最后一个-后面的值</li>
+<li>域KRBTGT账户密码HASH</li>
+<li>伪造用户名，可以是任意的</li>
+</ul>
+<h3 id="黄金票据伪造过程"><a href="#黄金票据伪造过程" class="headerlink" title="黄金票据伪造过程"></a>黄金票据伪造过程</h3><ol>
+<li>使用mimikatz抓取krbtgt用户的密码HASH及域SID<br><img src="3-1.png" alt="伪造过程"></li>
+<li>使用mimikatz伪造票据并注入到session<br><img src="3-2.png" alt="伪造过程"></li>
+<li>查看当前Session的权限<br><img src="3-3.png" alt="伪造过程"></li>
+<li>使用psexec在DC上执行命令<br><img src="3-4.png" alt="伪造过程"></li>
+</ol>
+<h2 id="ms14068漏洞分析"><a href="#ms14068漏洞分析" class="headerlink" title="ms14068漏洞分析"></a>ms14068漏洞分析</h2><h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h3><p>&emsp;通过上面对黄金票据的分析，我们知道了AS对于票据权限的检查，是基于票据中用户SID来进行的。所以如果我们能更改票据中的SID值，就能够将域用户进行提权。黄金票据漏洞可以修改SID，主要条件是知道域的SID和krbtgt账号密码的Hash，从而可以构造任意TGT票据。而ms14068<strong>不是</strong>通过黄金票据进行域用户提权的。<br>&emsp;其大概原理为，Client向AS(KDC)发送KRB_AS_REQ请求时，申请一张不包含PAC的TGT票据。并在Client向TGS发送KRB_TGS_REQ请求时，重新构造高权限TGT及PAC发送给TGS，TGS会返回一个新的TGT。<a href="https://www.anquanke.com/post/id/172900#h2-1" target="_blank" rel="noopener">参考文档</a><br>&emsp;漏洞利用的点：</p>
+<ul>
+<li>在域中默认允许设置Include-pac的值为False（不能算漏洞，应该是微软对于某些特定场景的特殊考虑设计出的机制）。</li>
+<li>PAC中的数字签名可以由Client端指定，并且Key的值可以为空。</li>
+<li>PAC的加密方式也可以由Client指定，并且Key的值为generate_subkey函数生成的16位随机数。</li>
+<li>构造的PAC中包含高权限组的SID内容。</li>
+</ul>
+<h3 id="什么是PAC"><a href="#什么是PAC" class="headerlink" title="什么是PAC"></a>什么是PAC</h3><p>&emsp;<a href="https://docs.microsoft.com/en-us/previous-versions/aa302203(v=msdn.10)#top-level-pac-structure" target="_blank" rel="noopener">微软定义</a></p>
+<p><a href="https://blogs.technet.microsoft.com/apgceps/2011/09/19/packerberos/" target="_blank" rel="noopener">https://blogs.technet.microsoft.com/apgceps/2011/09/19/packerberos/</a></p>
+<p><a href="https://blogs.msdn.microsoft.com/openspecification/2009/04/24/understanding-microsoft-kerberos-pac-validation/" target="_blank" rel="noopener">https://blogs.msdn.microsoft.com/openspecification/2009/04/24/understanding-microsoft-kerberos-pac-validation/</a></p>
+<h3 id="漏洞条件"><a href="#漏洞条件" class="headerlink" title="漏洞条件"></a>漏洞条件</h3><ul>
+<li>普通域用户账号/密码及其SID</li>
+</ul>
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3>
       
     </div>
     
@@ -366,7 +430,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/测试/" rel="tag"># 测试</a>
+            <a href="/tags/Windows/" rel="tag"># Windows</a>
+          
+            <a href="/tags/漏洞分析/" rel="tag"># 漏洞分析</a>
+          
+            <a href="/tags/协议分析/" rel="tag"># 协议分析</a>
           
         </div>
       
@@ -470,7 +538,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -503,7 +571,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#博客搭建步骤"><span class="nav-number">1.</span> <span class="nav-text">博客搭建步骤</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Kerberos协议介绍"><span class="nav-number">1.</span> <span class="nav-text">Kerberos协议介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是SSPI"><span class="nav-number">1.1.</span> <span class="nav-text">什么是SSPI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows常用的SSP"><span class="nav-number">1.2.</span> <span class="nav-text">Windows常用的SSP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kerberos形象化理解"><span class="nav-number">1.3.</span> <span class="nav-text">Kerberos形象化理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kerberos协议具体介绍"><span class="nav-number">1.4.</span> <span class="nav-text">Kerberos协议具体介绍</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#黄金票据"><span class="nav-number">2.</span> <span class="nav-text">黄金票据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是TGT票据"><span class="nav-number">2.1.</span> <span class="nav-text">什么是TGT票据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#黄金票据原理"><span class="nav-number">2.2.</span> <span class="nav-text">黄金票据原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#黄金票据伪造条件"><span class="nav-number">2.3.</span> <span class="nav-text">黄金票据伪造条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#黄金票据伪造过程"><span class="nav-number">2.4.</span> <span class="nav-text">黄金票据伪造过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ms14068漏洞分析"><span class="nav-number">3.</span> <span class="nav-text">ms14068漏洞分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#漏洞原理"><span class="nav-number">3.1.</span> <span class="nav-text">漏洞原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是PAC"><span class="nav-number">3.2.</span> <span class="nav-text">什么是PAC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#漏洞条件"><span class="nav-number">3.3.</span> <span class="nav-text">漏洞条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#漏洞利用"><span class="nav-number">3.4.</span> <span class="nav-text">漏洞利用</span></a></li></ol></li></ol></div>
             
 
           </div>
