@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6df;
+  background: #ffffba;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2747,17 +2747,16 @@ pre .javascript .function {
   padding-left: 0;
   padding-right: 260px;
 }
-以下为新增代码！！,
 header {
   width: 75% !important;
-  max-width: $white_max_width;
+  max-width: 1300px;
 }
 header.post-header {
   width: auto !important;
 }
 .container .main-inner {
   width: 75%;
-  max-width: $white_max_width;
+  max-width: 1300px;
 }
 .content-wrap {
   width: calc(100% - 260px);
@@ -3047,17 +3046,8 @@ header.post-header {
   border-bottom: 1px solid #fc6423;
 }
 code {
-  color: #c7254e;
-  background: #f9f2f4;
-  border: 1px solid #d6d6d6;
-  padding: 1px 4px;
   word-break: break-all;
-  border-radius: 4px;
 }
-.post {
-  margin-top: 60px;
-  margin-bottom: 60px;
-  padding: 25px;
-  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
-  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+body {
+  background: #f0f0f0;
 }
