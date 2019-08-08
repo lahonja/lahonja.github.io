@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Windows,漏洞分析,协议分析,">
+  <meta name="keywords" content="漏洞分析,Windows,协议分析,">
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="Kerberos协议介绍什么是SSPI&amp;emsp;安全支持提供者接口（英语：Security Support Provider Interface，缩写SSPI）是Microsoft Windows操作系统中用于执行各种安全相关操作（如身份验证）的一个Win32 API。&amp;emsp;SSPI的功能是作为众多安全支持提供程序（SSP）的通用接口：安全支持提供者（Security Support Pr">
-<meta name="keywords" content="Windows,漏洞分析,协议分析">
+<meta name="keywords" content="漏洞分析,Windows,协议分析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="结合ms14068对kerberos协议分析">
 <meta property="og:url" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/index.html">
@@ -121,7 +121,7 @@
 <meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-14.png">
 <meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-15.png">
 <meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-16.png">
-<meta property="og:updated_time" content="2019-08-06T07:24:47.819Z">
+<meta property="og:updated_time" content="2019-08-08T01:13:07.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="结合ms14068对kerberos协议分析">
 <meta name="twitter:description" content="Kerberos协议介绍什么是SSPI&amp;emsp;安全支持提供者接口（英语：Security Support Provider Interface，缩写SSPI）是Microsoft Windows操作系统中用于执行各种安全相关操作（如身份验证）的一个Win32 API。&amp;emsp;SSPI的功能是作为众多安全支持提供程序（SSP）的通用接口：安全支持提供者（Security Support Pr">
@@ -196,7 +196,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">让世界变得更加美好</p>
+        <p class="site-subtitle">lahonja's Blog</p>
       
   </div>
 
@@ -412,11 +412,12 @@
 <li>Kerberos（Windows 2000中引入，Windows Vista中更新为支持AES）(kerberos.dll) - Windows 2000及更高版本中首选的客户端-服务器域相互身份验证。</li>
 <li>Negotiate（Windows 2000中引入）(secur32.dll) - Negotiate安全包在Kerberos和NTLM之间进行选择协商选择。Negotiate默认使用Kerberos，当Kerberos不能被身份验证中涉及的某个系统使用时，将使用NTLM。</li>
 <li>摘要SSP（Windows XP中引入）(wdigest.dll) - 在Windows与Kerberos不可用的非Windows系统间提供基于HTTP和SASL身份验证的质询/响应。</li>
-<li>凭据 (CredSSP)（Windows Vista中引入，Windows XP SP3上也可用）(credssp.dll) - 为远程桌面连接提供单点登录（SSO）和网络级身份验证。</li>
-</ul>
+<li>凭据 (CredSSP)（Windows Vista中引入，Windows XP SP3上也可用）(credssp.dll) - 为远程桌面连接提供单点登录（SSO）和网络级身份验证。<a id="more"></a>
 <blockquote>
 <p>参考： <a href="https://zh.wikipedia.org/wiki/SSPI" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/SSPI</a></p>
 </blockquote>
+</li>
+</ul>
 <h3 id="Kerberos形象化理解"><a href="#Kerberos形象化理解" class="headerlink" title="Kerberos形象化理解"></a>Kerberos形象化理解</h3><p>&emsp;Kerberos协议中主要涉及到Client、AS（也被称为KDC）、TGS、SS。我们形象化到我们的生活中，可以分别理解为4个主体：张三（Client）、公安局（AS）、房管局（TGS）、售楼部（SS）。<br>&emsp;这里以买房子为例，张三到售楼部买房子，但是售楼部是需要张三提供房管局签发的允许购房证明；张三到了房管局，但是房管局为了确认张三的身份，需要张三到公安局开一张个人身份证明（ <strong>公安局为了这个证明不用做其他用途，将这个证明加了密的，只有公安局能够解开；想要查验这个证明是否有效，需要房管局向公安局查验</strong> ）。当然上述流程是一个逆向去开证明的流程，为了不多跑路，这个流程一开始就是公开的。所以正常的步骤应该是：</p>
 <ol>
 <li>张三到公安局开身份证明（Client-&gt;AS）</li>
@@ -432,10 +433,12 @@
 <li>AS(Authentication Server):身份认证服务</li>
 <li>TGS(Ticket Granting Server):票据授予服务,该服务提供的票据也称为 TGS 或者叫白银票据，也被称为ST。</li>
 <li>TGT(Ticket Granting Ticket):由身份认证服务授予的票据(黄金票据)，用于身份认证，存储在内存，默认有效期为10小时<img src="/2019/08/05/结合ms14068对kerberos协议分析/2-1.png">
-&emsp;Kerberos认证流程简化如下（<a href="https://medium.com/@robert.broeckelmann/kerberos-wireshark-captures-a-windows-login-example-151fabf3375a" target="_blank" rel="noopener">具体数据包解析传送门</a>）<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">1. KRB_AS_REQ</span><br><span class="line">   <span class="built_in"> Client </span>-&gt; Server(AS) 认证服务</span><br><span class="line">    Message0: </span><br><span class="line">        加密: client_secret_key</span><br><span class="line">        数据: Realm,principal,IP,Pre-authentication data<span class="built_in">..</span>.</span><br><span class="line">        </span><br><span class="line">2. KRB_AS_RSP</span><br><span class="line">    Server(AS) 认证服务 -&gt; Client</span><br><span class="line">    Message1: </span><br><span class="line">        加密: client_secret_key</span><br><span class="line">        数据: TGS name,TGS_session_key</span><br><span class="line">    Message2(访问TGS的票据TGT): Client解密不了</span><br><span class="line">        加密: TGS_secret_key(krbtgt_hash)</span><br><span class="line">        数据: Username,TGS Name,TGS_session_key<span class="built_in">..</span>.</span><br><span class="line">        </span><br><span class="line">3. KRB_TGS_REQ</span><br><span class="line">   <span class="built_in"> Client </span>-&gt; Server(TGS) 票据授权服务</span><br><span class="line">    Message3: Client解密不了</span><br><span class="line">        加密: 由上一步服务端使用 TGS_secret_key(krbtgt_hash) 加密</span><br><span class="line">        数据: 直接转发Message2(访问TGS的票据TGT)</span><br><span class="line">    Message4:</span><br><span class="line">        加密: TGS_session_key</span><br><span class="line">        数据: authenticator</span><br><span class="line">        </span><br><span class="line">4. KRB_TGS_RSP</span><br><span class="line">    Server(TGS) 认证服务 -&gt; Client</span><br><span class="line">    Message5(访问SS的票据ST): Client解密不了</span><br><span class="line">        加密: Service_Secret_Key</span><br><span class="line">        数据: Service_Session_Key</span><br><span class="line">    Message6:</span><br><span class="line">        加密: TGS_session_key</span><br><span class="line">        数据: Service_Session_Key</span><br><span class="line">        </span><br><span class="line">5. KRB_AP_REQ</span><br><span class="line">   <span class="built_in"> Client </span>-&gt; Server(SS) 应用服务</span><br><span class="line">    Message5(访问SS的票据ST): Client解密不了</span><br><span class="line">        加密: Service_Secret_Key</span><br><span class="line">        数据: Username,Service Name,Service_Session_Key</span><br><span class="line">    Message7:</span><br><span class="line">        加密: Service_Session_Key</span><br><span class="line">        数据: authenticator</span><br><span class="line">        </span><br><span class="line">6. KRB_AP_RSP</span><br><span class="line">    Server(SS) 应用服务 -&gt; Client</span><br><span class="line">    Message8:</span><br><span class="line">        加密方式: Service_Session_Key</span><br><span class="line">        数据: authenticator</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
+<p>&emsp;Kerberos认证流程简化如下（<a href="https://medium.com/@robert.broeckelmann/kerberos-wireshark-captures-a-windows-login-example-151fabf3375a" target="_blank" rel="noopener">具体数据包解析传送门</a>）</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">1. KRB_AS_REQ</span><br><span class="line">   <span class="built_in"> Client </span>-&gt; Server(AS) 认证服务</span><br><span class="line">    Message0: </span><br><span class="line">        加密: client_secret_key</span><br><span class="line">        数据: Realm,principal,IP,Pre-authentication data<span class="built_in">..</span>.</span><br><span class="line">        </span><br><span class="line">2. KRB_AS_RSP</span><br><span class="line">    Server(AS) 认证服务 -&gt; Client</span><br><span class="line">    Message1: </span><br><span class="line">        加密: client_secret_key</span><br><span class="line">        数据: TGS name,TGS_session_key</span><br><span class="line">    Message2(访问TGS的票据TGT): Client解密不了</span><br><span class="line">        加密: TGS_secret_key(krbtgt_hash)</span><br><span class="line">        数据: Username,TGS Name,TGS_session_key<span class="built_in">..</span>.</span><br><span class="line">        </span><br><span class="line">3. KRB_TGS_REQ</span><br><span class="line">   <span class="built_in"> Client </span>-&gt; Server(TGS) 票据授权服务</span><br><span class="line">    Message3: Client解密不了</span><br><span class="line">        加密: 由上一步服务端使用 TGS_secret_key(krbtgt_hash) 加密</span><br><span class="line">        数据: 直接转发Message2(访问TGS的票据TGT)</span><br><span class="line">    Message4:</span><br><span class="line">        加密: TGS_session_key</span><br><span class="line">        数据: authenticator</span><br><span class="line">        </span><br><span class="line">4. KRB_TGS_RSP</span><br><span class="line">    Server(TGS) 认证服务 -&gt; Client</span><br><span class="line">    Message5(访问SS的票据ST): Client解密不了</span><br><span class="line">        加密: Service_Secret_Key</span><br><span class="line">        数据: Service_Session_Key</span><br><span class="line">    Message6:</span><br><span class="line">        加密: TGS_session_key</span><br><span class="line">        数据: Service_Session_Key</span><br><span class="line">        </span><br><span class="line">5. KRB_AP_REQ</span><br><span class="line">   <span class="built_in"> Client </span>-&gt; Server(SS) 应用服务</span><br><span class="line">    Message5(访问SS的票据ST): Client解密不了</span><br><span class="line">        加密: Service_Secret_Key</span><br><span class="line">        数据: Username,Service Name,Service_Session_Key</span><br><span class="line">    Message7:</span><br><span class="line">        加密: Service_Session_Key</span><br><span class="line">        数据: authenticator</span><br><span class="line">        </span><br><span class="line">6. KRB_AP_RSP</span><br><span class="line">    Server(SS) 应用服务 -&gt; Client</span><br><span class="line">    Message8:</span><br><span class="line">        加密方式: Service_Session_Key</span><br><span class="line">        数据: authenticator</span><br></pre></td></tr></table></figure>
+
 <p>下面是三张详细的Kerberos认证过程流程图：</p>
 <img src="/2019/08/05/结合ms14068对kerberos协议分析/1.jpeg">
 <img src="/2019/08/05/结合ms14068对kerberos协议分析/2.png">
@@ -606,7 +609,8 @@
 <img src="/2019/08/05/结合ms14068对kerberos协议分析/4-15.png">
 <p>然后在SMB的Session Setup Response中做出响应，也就是AP-REP这个流程：</p>
 <img src="/2019/08/05/结合ms14068对kerberos协议分析/4-16.png">
-<p>到此为止Client能够越权访问域控的共享文件夹。</p>
+
+<p>上述流程完成，Client就能够越权访问域控的共享文件夹了。</p>
 
       
     </div>
@@ -624,9 +628,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Windows/" rel="tag"># Windows</a>
-          
             <a href="/tags/漏洞分析/" rel="tag"># 漏洞分析</a>
+          
+            <a href="/tags/Windows/" rel="tag"># Windows</a>
           
             <a href="/tags/协议分析/" rel="tag"># 协议分析</a>
           
@@ -637,6 +641,22 @@
       
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/07/结合CVE-2019-1040分析NTLM中继攻击/" rel="prev" title="结合CVE-2019-1040分析NTLM中继攻击">
+                结合CVE-2019-1040分析NTLM中继攻击 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
@@ -717,7 +737,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -728,7 +748,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -739,7 +759,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -755,7 +775,7 @@
                 <span class="site-state-item-name">访客量</span>
             </div>
             <div class="site-state-item site-state-posts">
-                  <span class="site-state-item-count">6.1k</span>
+                  <span class="site-state-item-count">13.2k</span>
                   <span class="site-state-item-name">总字数</span>
             </div>
           </nav>
