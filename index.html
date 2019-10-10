@@ -364,22 +364,20 @@
 
       
         
-          
-          准备工作windbg调试本次调试环境为Win7 x86 sp1，使用windbg需要安装SDK。另外要注意的是，新安装的系统的win32k.sys版本为6.1.7601.17514，本文分析的win32k.sys版本为6.1.7601.23591。下载地址：https://www.microsoft.com/en-us/download/details.aspx?id=8279
+          <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="windbg调试"><a href="#windbg调试" class="headerlink" title="windbg调试"></a>windbg调试</h4><p>本次调试环境为Win7 x86 sp1，使用windbg需要安装SDK。另外要注意的是，新安装的系统的win32k.sys版本为6.1.7601.17514，本文分析的win32k.sys版本为6.1.7601.23591。<br>下载地址：<a href="https://www.microsoft.com/en-us/download/details.aspx?id=8279" target="_blank" rel="noopener">https://www.microsoft.com/en-us/download/details.aspx?id=8279</a></p>
+<blockquote>
+<p><a href="cve-2019-0808.rar">点击下载DLL及pdb、IDA注释文件</a></p>
+</blockquote>
+<img src="/2019/10/10/CVE-2019-0808详细分析/40.png">
 
-点击下载DLL及pdb、IDA注释文件
+<h4 id="开启内核调试"><a href="#开启内核调试" class="headerlink" title="开启内核调试"></a>开启内核调试</h4><p>首先在系统变量中设置符号表服务器系统变量：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_NT_SYMBOL_PATH=SRV*C:\WINDOWS\Symbols*http://msdl.microsoft.com/download/symbols</span><br></pre></td></tr></table></figure>
 
+<p>进入kernel-mode debugging (kd&gt; or lkd&gt;)调试模式，首先命令行运行</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bcdedit /debug on</span><br></pre></td></tr></table></figure>
 
-
-开启内核调试首先在系统变量中设置符号表服务器系统变量：
-1_NT_SYMBOL_PATH=SRV*C:\WINDOWS\Symbols*http://msdl.microsoft.com/download/symbols
-
-进入kernel-mode debugging (kd&gt; or lkd&gt;)调试模式，首先命令行运行
-1bcdedit /debug on
-
-重启，再打开windbg，即可通过快捷键 Ctrl+K ，或者以下菜单路径，进入内核调试模块：
-123WinDbg File&gt;Kernel Debugging&gt;Local&gt;Ok
-          ...
+<p>重启，再打开windbg，即可通过快捷键 Ctrl+K ，或者以下菜单路径，进入内核调试模块：</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WinDbg <span class="keyword">File</span>&gt;Kernel Debugging&gt;<span class="keyword">Local</span>&gt;Ok</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/10/10/CVE-2019-0808详细分析/#more" rel="contents">
