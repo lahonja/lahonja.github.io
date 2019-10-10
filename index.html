@@ -253,6 +253,186 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lahonja.site/2019/10/10/CVE-2019-0808详细分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LAHONJA">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录和分享网络安全知识">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/10/CVE-2019-0808详细分析/" itemprop="url">CVE-2019-0808详细分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-10T08:51:33+08:00">
+                2019-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/漏洞分析/" itemprop="url" rel="index">
+                    <span itemprop="name">漏洞分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5.4k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          准备工作windbg调试本次调试环境为Win7 x86 sp1，使用windbg需要安装SDK。另外要注意的是，新安装的系统的win32k.sys版本为6.1.7601.17514，本文分析的win32k.sys版本为6.1.7601.23591。下载地址：https://www.microsoft.com/en-us/download/details.aspx?id=8279
+
+点击下载DLL及pdb、IDA注释文件
+
+
+
+开启内核调试首先在系统变量中设置符号表服务器系统变量：
+1_NT_SYMBOL_PATH=SRV*C:\WINDOWS\Symbols*http://msdl.microsoft.com/download/symbols
+
+进入kernel-mode debugging (kd&gt; or lkd&gt;)调试模式，首先命令行运行
+1bcdedit /debug on
+
+重启，再打开windbg，即可通过快捷键 Ctrl+K ，或者以下菜单路径，进入内核调试模块：
+12WinDbg File&gt;Kernel Debugging&gt;Local&gt;Ok&
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/10/10/CVE-2019-0808详细分析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lahonja.site/2019/08/09/MITRE-ATT-CK-攻击手段目录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -365,341 +545,10 @@
       
         
           <p>官方链接：<a href="https://attack.mitre.org/" target="_blank" rel="noopener">attack.mitre.org</a></p>
-<h2 id="建立立足点"><a href="#建立立足点" class="headerlink" title="建立立足点"></a>建立立足点</h2><h3 id="目标会使用和访问的其他服务"><a href="#目标会使用和访问的其他服务" class="headerlink" title="目标会使用和访问的其他服务"></a>目标会使用和访问的其他服务</h3><h3 id="利用面向公众的应用程序"><a href="#利用面向公众的应用程序" class="headerlink" title="利用面向公众的应用程序"></a>利用面向公众的应用程序</h3><h3 id="外部远程服务"><a href="#外部远程服务" class="headerlink" title="外部远程服务"></a>外部远程服务</h3><h3 id="硬件攻击"><a href="#硬件攻击" class="headerlink" title="硬件攻击"></a>硬件攻击</h3><h3 id="通过移动介质传播"><a href="#通过移动介质传播" class="headerlink" title="通过移动介质传播"></a>通过移动介质传播</h3><h3 id="鱼叉式钓鱼附件"><a href="#鱼叉式钓鱼附件" class="headerlink" title="鱼叉式钓鱼附件"></a>鱼叉式钓鱼附件</h3><h3 id="鱼叉式钓鱼链接"><a href="#鱼叉式钓鱼链接" class="headerlink" title="鱼叉式钓鱼链接"></a>鱼叉式钓鱼链接</h3><h3 id="通过服务鱼叉式网络钓鱼"><a href="#通过服务鱼叉式网络钓鱼" class="headerlink" title="通过服务鱼叉式网络钓鱼"></a>通过服务鱼叉式网络钓鱼</h3><h3 id="供应链链攻击"><a href="#供应链链攻击" class="headerlink" title="供应链链攻击"></a>供应链链攻击</h3><h3 id="信任关系"><a href="#信任关系" class="headerlink" title="信任关系"></a>信任关系</h3><h3 id="有效帐户"><a href="#有效帐户" class="headerlink" title="有效帐户"></a>有效帐户</h3>
+<h3 id="建立立足点"><a href="#建立立足点" class="headerlink" title="建立立足点"></a>建立立足点</h3><h4 id="目标会使用和访问的其他服务"><a href="#目标会使用和访问的其他服务" class="headerlink" title="目标会使用和访问的其他服务"></a>目标会使用和访问的其他服务</h4><h4 id="利用面向公众的应用程序"><a href="#利用面向公众的应用程序" class="headerlink" title="利用面向公众的应用程序"></a>利用面向公众的应用程序</h4><h4 id="外部远程服务"><a href="#外部远程服务" class="headerlink" title="外部远程服务"></a>外部远程服务</h4><h4 id="硬件攻击"><a href="#硬件攻击" class="headerlink" title="硬件攻击"></a>硬件攻击</h4><h4 id="通过移动介质传播"><a href="#通过移动介质传播" class="headerlink" title="通过移动介质传播"></a>通过移动介质传播</h4><h4 id="鱼叉式钓鱼附件"><a href="#鱼叉式钓鱼附件" class="headerlink" title="鱼叉式钓鱼附件"></a>鱼叉式钓鱼附件</h4><h4 id="鱼叉式钓鱼链接"><a href="#鱼叉式钓鱼链接" class="headerlink" title="鱼叉式钓鱼链接"></a>鱼叉式钓鱼链接</h4><h4 id="通过服务鱼叉式网络钓鱼"><a href="#通过服务鱼叉式网络钓鱼" class="headerlink" title="通过服务鱼叉式网络钓鱼"></a>通过服务鱼叉式网络钓鱼</h4><h4 id="供应链链攻击"><a href="#供应链链攻击" class="headerlink" title="供应链链攻击"></a>供应链链攻击</h4><h4 id="信任关系"><a href="#信任关系" class="headerlink" title="信任关系"></a>信任关系</h4><h4 id="有效帐户"><a href="#有效帐户" class="headerlink" title="有效帐户"></a>有效帐户</h4>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/08/09/MITRE-ATT-CK-攻击手段目录/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lahonja.site/2019/08/07/金融支付系统中存在的风险总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LAHONJA">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录和分享网络安全知识">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/07/金融支付系统中存在的风险总结/" itemprop="url">金融支付系统中存在的风险总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T10:55:35+08:00">
-                2019-08-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/业务安全/" itemprop="url" rel="index">
-                    <span itemprop="name">业务安全</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  100
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="后续完成"><a href="#后续完成" class="headerlink" title="后续完成"></a>后续完成</h2><h2 id="支付系统架构设计"><a href="#支付系统架构设计" class="headerlink" title="支付系统架构设计"></a>支付系统架构设计</h2><h2 id="支付流程"><a href="#支付流程" class="headerlink" title="支付流程"></a>支付流程</h2>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/08/07/金融支付系统中存在的风险总结/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lahonja.site/2019/08/07/总结一些Linux后门及取证方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LAHONJA">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录和分享网络安全知识">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/07/总结一些Linux后门及取证方法/" itemprop="url">总结一些Linux后门及取证方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T10:55:04+08:00">
-                2019-08-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/内网渗透/" itemprop="url" rel="index">
-                    <span itemprop="name">内网渗透</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2.9k
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="后续完成"><a href="#后续完成" class="headerlink" title="后续完成"></a>后续完成</h2><p>Linux 高级隐藏木马实现及检测方式</p>
-<p>偷梁换柱型<br>1）隐藏原理<br>    通过替换系统中常见的进程查看工具（比如ps、top、lsof）的二进制程序，导致原先查看进程相关信息的工具（ps、top、lsof等）都被调包了，当然看不到<br>2）防护手段<br>    ​ I、从干净的系统上拷贝这些工具的备份至当前系统，对比前后的输出是否一致，不一致，则说明被替换了<br>    ​ II、检测这些工具的hash值是否与系统初始化的时候值不一致，是，则说明被替换了</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/08/07/总结一些Linux后门及取证方法/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1130,7 +979,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1152,7 +1001,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1168,7 +1017,7 @@
                 <span class="site-state-item-name">访客量</span>
             </div>
             <div class="site-state-item site-state-posts">
-                  <span class="site-state-item-count">16.1k</span>
+                  <span class="site-state-item-count">18.5k</span>
                   <span class="site-state-item-name">总字数</span>
             </div>
           </nav>
