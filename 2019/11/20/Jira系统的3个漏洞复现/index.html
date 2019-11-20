@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="任意文件读取（CVE-2019-3396）需要普通用户权限，先登陆后，创建一篇文章，在插入菜单中插入其他宏，搜索youtube，插入小工具连接器。随便找个youtube的视频链接填写需要的相关信息。   下面是插入小工具连接器时会发送的请求： 12345678910111213141516POST /rest/tinymce/1/macro/placeholder HTTP/1.1Host: co">
+<meta name="description" content="任意文件读取（CVE-2019-3396）需要普通用户权限，先登陆后，创建一篇文章，在插入菜单中插入其他宏，搜索youtube，插入小工具连接器。随便找个youtube的视频链接填写需要的相关信息。">
 <meta name="keywords" content="漏洞分析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jira系统的3个漏洞复现">
 <meta property="og:url" content="http://lahonja.site/2019/11/20/Jira系统的3个漏洞复现/index.html">
 <meta property="og:site_name" content="大大黄的博客">
-<meta property="og:description" content="任意文件读取（CVE-2019-3396）需要普通用户权限，先登陆后，创建一篇文章，在插入菜单中插入其他宏，搜索youtube，插入小工具连接器。随便找个youtube的视频链接填写需要的相关信息。   下面是插入小工具连接器时会发送的请求： 12345678910111213141516POST /rest/tinymce/1/macro/placeholder HTTP/1.1Host: co">
+<meta property="og:description" content="任意文件读取（CVE-2019-3396）需要普通用户权限，先登陆后，创建一篇文章，在插入菜单中插入其他宏，搜索youtube，插入小工具连接器。随便找个youtube的视频链接填写需要的相关信息。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://lahonja.site/2019/11/20/Jira系统的3个漏洞复现/Jira%E7%B3%BB%E7%BB%9F%E7%9A%843%E4%B8%AA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/2.png">
 <meta property="og:image" content="http://lahonja.site/2019/11/20/Jira系统的3个漏洞复现/Jira%E7%B3%BB%E7%BB%9F%E7%9A%843%E4%B8%AA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1.png">
@@ -93,10 +93,10 @@
 <meta property="og:image" content="http://lahonja.site/2019/11/20/Jira系统的3个漏洞复现/Jira%E7%B3%BB%E7%BB%9F%E7%9A%843%E4%B8%AA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/6.png">
 <meta property="og:image" content="http://lahonja.site/2019/11/20/Jira系统的3个漏洞复现/Jira%E7%B3%BB%E7%BB%9F%E7%9A%843%E4%B8%AA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/4.png">
 <meta property="og:image" content="http://lahonja.site/2019/11/20/Jira系统的3个漏洞复现/Jira%E7%B3%BB%E7%BB%9F%E7%9A%843%E4%B8%AA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/5.png">
-<meta property="og:updated_time" content="2019-11-20T08:58:28.594Z">
+<meta property="og:updated_time" content="2019-11-20T09:01:19.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jira系统的3个漏洞复现">
-<meta name="twitter:description" content="任意文件读取（CVE-2019-3396）需要普通用户权限，先登陆后，创建一篇文章，在插入菜单中插入其他宏，搜索youtube，插入小工具连接器。随便找个youtube的视频链接填写需要的相关信息。   下面是插入小工具连接器时会发送的请求： 12345678910111213141516POST /rest/tinymce/1/macro/placeholder HTTP/1.1Host: co">
+<meta name="twitter:description" content="任意文件读取（CVE-2019-3396）需要普通用户权限，先登陆后，创建一篇文章，在插入菜单中插入其他宏，搜索youtube，插入小工具连接器。随便找个youtube的视频链接填写需要的相关信息。">
 <meta name="twitter:image" content="http://lahonja.site/2019/11/20/Jira系统的3个漏洞复现/Jira%E7%B3%BB%E7%BB%9F%E7%9A%843%E4%B8%AA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/2.png">
 
 
@@ -381,6 +381,8 @@
         <h1 id="任意文件读取（CVE-2019-3396）"><a href="#任意文件读取（CVE-2019-3396）" class="headerlink" title="任意文件读取（CVE-2019-3396）"></a>任意文件读取（CVE-2019-3396）</h1><p>需要普通用户权限，先登陆后，创建一篇文章，在插入菜单中插入其他宏，搜索youtube，插入小工具连接器。随便找个youtube的视频链接填写需要的相关信息。</p>
 <p><img src="Jira%E7%B3%BB%E7%BB%9F%E7%9A%843%E4%B8%AA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/2.png" alt></p>
 <p><img src="Jira%E7%B3%BB%E7%BB%9F%E7%9A%843%E4%B8%AA%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1.png" alt></p>
+<a id="more"></a>
+
 <p>下面是插入小工具连接器时会发送的请求：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/rest/tinymce/1/macro/placeholder</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: confluence.xxxxxx.com</span><br><span class="line"><span class="attribute">Content-Length</span>: 183</span><br><span class="line"><span class="attribute">Accept</span>: text/plain, */*; q=0.01</span><br><span class="line"><span class="attribute">Origin</span>: http://confluence.xxxxxx.com</span><br><span class="line"><span class="attribute">X-Requested-With</span>: XMLHttpRequest</span><br><span class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36</span><br><span class="line"><span class="attribute">DNT</span>: 1</span><br><span class="line"><span class="attribute">Content-Type</span>: application/json; charset=UTF-8</span><br><span class="line"><span class="attribute">Referer</span>: http://confluence.xxxxxx.com/pages/resumedraft.action?draftId=22152873&amp;draftShareId=a8556635-28a4-40b1-a2c5-d53e13d93cee</span><br><span class="line"><span class="attribute">Accept-Encoding</span>: gzip, deflate</span><br><span class="line"><span class="attribute">Accept-Language</span>: zh-CN,zh;q=0.9,da;q=0.8</span><br><span class="line"><span class="attribute">Cookie</span>: cid=ChMjk13Lwho9PphajTtDAg==; JSESSIONID=855378CA7A99F1153AE84BE8417FA113</span><br><span class="line"><span class="attribute">Connection</span>: close</span><br><span class="line"></span><br><span class="line">&#123;"contentId":"22152872","macro":&#123;"name":"widget","params":&#123;"url":"https://www.youtube.com/watch?v=6qLr1CesJuk","width":"200","height":"200"&#125;,"body":""&#125;&#125;</span><br></pre></td></tr></table></figure>
 
