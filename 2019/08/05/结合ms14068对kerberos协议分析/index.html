@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="漏洞分析,Windows,协议分析,">
+  <meta name="keywords" content="Windows,漏洞分析,协议分析,">
 
 
 
@@ -80,52 +80,52 @@
 
 
 <meta name="description" content="Kerberos协议介绍什么是SSPI&amp;emsp;安全支持提供者接口（英语：Security Support Provider Interface，缩写SSPI）是Microsoft Windows操作系统中用于执行各种安全相关操作（如身份验证）的一个Win32 API。&amp;emsp;SSPI的功能是作为众多安全支持提供程序（SSP）的通用接口：安全支持提供者（Security Support Pr">
-<meta name="keywords" content="漏洞分析,Windows,协议分析">
+<meta name="keywords" content="Windows,漏洞分析,协议分析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="结合ms14068对kerberos协议分析">
-<meta property="og:url" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/index.html">
+<meta property="og:url" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/index.html">
 <meta property="og:site_name" content="大大黄的博客">
 <meta property="og:description" content="Kerberos协议介绍什么是SSPI&amp;emsp;安全支持提供者接口（英语：Security Support Provider Interface，缩写SSPI）是Microsoft Windows操作系统中用于执行各种安全相关操作（如身份验证）的一个Win32 API。&amp;emsp;SSPI的功能是作为众多安全支持提供程序（SSP）的通用接口：安全支持提供者（Security Support Pr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/2-1.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/1.jpeg">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/2.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/kerberos_detail.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/3-1.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/3-2.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/3-3.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/3-4.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/5-0.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/5-1.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/5-2.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-1.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-2.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-3.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-4.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-5.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-6.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-7.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-8.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-9.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-17.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-18.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-19.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-10.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-20.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-21.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-22.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-11.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-12.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-23.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-13.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-14.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-15.png">
-<meta property="og:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/4-16.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/2-1.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/1.jpeg">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/2.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/kerberos_detail.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/3-1.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/3-2.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/3-3.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/3-4.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/5-0.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/5-1.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/5-2.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-1.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-2.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-3.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-4.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-5.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-6.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-7.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-8.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-9.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-17.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-18.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-19.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-10.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-20.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-21.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-22.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-11.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-12.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-23.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-13.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-14.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-15.png">
+<meta property="og:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/4-16.png">
 <meta property="og:updated_time" content="2019-08-08T01:13:07.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="结合ms14068对kerberos协议分析">
 <meta name="twitter:description" content="Kerberos协议介绍什么是SSPI&amp;emsp;安全支持提供者接口（英语：Security Support Provider Interface，缩写SSPI）是Microsoft Windows操作系统中用于执行各种安全相关操作（如身份验证）的一个Win32 API。&amp;emsp;SSPI的功能是作为众多安全支持提供程序（SSP）的通用接口：安全支持提供者（Security Support Pr">
-<meta name="twitter:image" content="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/2-1.png">
+<meta name="twitter:image" content="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/2-1.png">
 
 
 
@@ -155,7 +155,7 @@
 
 
 
-  <link rel="canonical" href="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/">
+  <link rel="canonical" href="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/">
 
 
 
@@ -288,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lahonja.site/2019/08/05/结合ms14068对kerberos协议分析/">
+    <link itemprop="mainEntityOfPage" href="http://lahonja.me/2019/08/05/结合ms14068对kerberos协议分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LAHONJA">
@@ -628,9 +628,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/漏洞分析/" rel="tag"># 漏洞分析</a>
-          
             <a href="/tags/Windows/" rel="tag"># Windows</a>
+          
+            <a href="/tags/漏洞分析/" rel="tag"># 漏洞分析</a>
           
             <a href="/tags/协议分析/" rel="tag"># 协议分析</a>
           
@@ -737,7 +737,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -748,7 +748,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -759,7 +759,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -775,7 +775,7 @@
                 <span class="site-state-item-name">访客量</span>
             </div>
             <div class="site-state-item site-state-posts">
-                  <span class="site-state-item-count">19.8k</span>
+                  <span class="site-state-item-count">16.6k</span>
                   <span class="site-state-item-name">总字数</span>
             </div>
           </nav>
@@ -825,7 +825,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
