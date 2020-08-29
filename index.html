@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>大大黄的博客 | lahonja&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="网络安全 CTF 内网渗透 取证分析">
+  <meta name="description" content="网络安全 CTF 内网渗透 取证分析">
+<meta name="keywords" content="网络安全 CTF 内网渗透 取证分析">
+<meta property="og:type" content="website">
+<meta property="og:title" content="大大黄的博客">
+<meta property="og:url" content="http://lahonja.me/index.html">
+<meta property="og:site_name" content="大大黄的博客">
+<meta property="og:description" content="网络安全 CTF 内网渗透 取证分析">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大大黄的博客">
+<meta name="twitter:description" content="网络安全 CTF 内网渗透 取证分析">
+  
+    <link rel="alternative" href="/atom.xml" title="大大黄的博客" type="application/atom+xml">
+  
+  <meta name="summary" content="网络安全 CTF 内网渗透 取证分析">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu"  >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
+      <hgroup class="introduce">
+        <h5 class="nickname">LAHONJA</h5>
+        <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+      </hgroup>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect active">
+            <a href="/"  >
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives"  >
+              <i class="icon icon-lg icon-archives"></i>
+              Archives
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags"  >
+              <i class="icon icon-lg icon-tags"></i>
+              Tags
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/yscoder" target="_blank" >
+              <i class="icon icon-lg icon-github"></i>
+              Github
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="http://www.weibo.com/ysweb" target="_blank" >
+              <i class="icon icon-lg icon-weibo"></i>
+              Weibo
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/404"  >
+              <i class="icon icon-lg icon-link"></i>
+              测试
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>大大黄的博客 &copy; 2020</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">大大黄的博客</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">大大黄的博客</h1>
+    <h5 class="subtitle">
+        
+        lahonja&#39;s Blog
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <ul class="post-list">
+  
+    <li class="post-list-item">
+        <article id="post-CVE-2019-0808详细分析"
+  class="article article-type-post" itemprop="blogPost">
+     
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/10/10/CVE-2019-0808详细分析/">CVE-2019-0808详细分析</a>
+    </h3>
+  
+
+
+
+    <div class="post-meta">
+        <time datetime="2019-10-10T00:51:33.000Z" itemprop="datePublished" class="post-time">
+  2019-10-10
+</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/漏洞分析/">漏洞分析</a></li></ul>
+
+
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent" >
+
+    
+           准备工作    windbg调试  本次调试环境为Win7 x86 sp1，使用windbg需要安装SDK。另外要注意的是，新安装的系统的win32k.sys版本为6.1.7601.17514，本文分析的win32k.sys版本为6.1.7601.23591。 下载地址： https://www.microsoft.com/en-us/download/details.aspx?id=8279  
+ 
+  点击下载DLL及pdb、IDA注释文件  
+ 
+ 
+
+ win8/win10可以在应用商店安装windbg preview，并配合 VirtualKD 进行双机调试 :)   传送门  VirtualKD 中调试器路径选择自定义，地址为： 
+      1       C: \U sers \j ack \A ppData \L ocal \M icrosoft \W indowsApps \W inDbgX.exe /k com:pipe,resets=0,reconnect,port=$(pipename)       
+
+ 注意不是windbg preview安装后的EXE目录： 
+      1        C :\ Program   Files \ WindowsApps \ Microsoft  .WinDbg_1  .1910  .3003  .0_neutral__8wekyb3d8bbwe \ DbgX  .Shell  .exe        
+
+ 另外 IDA 7.0 如果不自动下载PDB符号，需要将cfg/pdb.cfg中的相关注释去掉，并建立相应文件夹，另外需要vc runtime 2010运行库（是个坑）。 
+   开启内核调试  首先在系统变量中设置符号表服务器系统变量： 
+      1       _NT_SYMBOL_PATH=SRV*C:\WINDOWS\Symbols*http://msdl.microsoft.com/download/symbols       
+
+ 进入kernel-mode debugging (kd&gt; or lkd&gt;)调试模式，首先命令行运行 
+      1       bcdedit /debug on       
+
+ 重启，再打开windbg，即可通过快捷键 Ctrl+K ，或者以下菜单路径，进入内核调试模块： 
+      1       WinDbg  File &gt;Kernel Debugging&gt; Local &gt;Ok       
+    
+    
+        <a href="/2019/10/10/CVE-2019-0808详细分析/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CVE-2019-0808/">CVE-2019-0808</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漏洞分析/">漏洞分析</a></li></ul>
+
+</article>
+
+    </li>
+  
+    <li class="post-list-item">
+        <article id="post-结合CVE-2019-1040分析NTLM中继攻击"
+  class="article article-type-post" itemprop="blogPost">
+     
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/08/07/结合CVE-2019-1040分析NTLM中继攻击/">结合CVE-2019-1040分析NTLM中继攻击</a>
+    </h3>
+  
+
+
+
+    <div class="post-meta">
+        <time datetime="2019-08-07T02:41:52.000Z" itemprop="datePublished" class="post-time">
+  2019-08-07
+</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/内网渗透/">内网渗透</a></li></ul>
+
+
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent" >
+
+    
+           什么是NTLM中继攻击    原理  NTLM是Windows实现身份认证的一种协议，如计算机A远程登陆计算机B，在计算机B验证计算机A的时候使用的是NTLM协议。但是在这个过程中，计算机A在通常情况下不知道计算机B是不是真正的计算机B，因为攻击机C也可以来冒充计算机B。当攻击机C冒充计算机B后，原本计算机A发往计算机B的NTLM认证流量，将发送给攻击机C，攻击机C接收到认证信息之后，再转发给B，从而实现NTLM流量的中继，也就是平常所说的中间人攻击，NTLM中继也就是中间人攻击的一种。 上述过程我们可以将再攻击机C上的中继程序理解为一个NTLM协议代理程序。但是攻击机C怎么实现欺骗计算机A呢，许多网络协议可以用来进行欺骗，从而进行中间人攻击，常见的有ARP、DHCP、DNS等。在实际的攻击中，使用LLMNR/NetBIOSNS欺骗的方式更多，因为这类欺骗的网络流量小，实施也更容易，与Net-NTLMhash relay attack的结合也更紧密。 LLMNR和NetBIOSNS是Windows系统完成名称解析的一种方法。  Windows系统对机器名的解析顺序如下：  
+ 
+ 本地HOSTS文件（%windir%\System32\drivers\etc\hosts） 
+ DNS缓存 
+ DNS服务器 
+ 链路本地多播名称解析（LLMNR） 
+ NetBIOS名称服务（NBT-NS） 
+ 
+ 
+  参考文档  
+ 
+   LLMNR协议  在DNS 服务器不可用时，DNS 客户端计算机可以使用本地链路多播名称解析 (LLMNR—Link-Local Multicast Name Resolution)（也称为多播 DNS 或 mDNS）来解析本地网段上的名称。例如，如果路由器出现故障，从网络上的所有 DNS 服务器切断了子网，则支持 LLMNR 的子网上的客户端可以继续在对等基础上解析名称，直到网络连接还原为止。 
+    
+    
+        <a href="/2019/08/07/结合CVE-2019-1040分析NTLM中继攻击/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/协议分析/">协议分析</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漏洞分析/">漏洞分析</a></li></ul>
+
+</article>
+
+    </li>
+  
+    <li class="post-list-item">
+        <article id="post-结合ms14068对kerberos协议分析"
+  class="article article-type-post" itemprop="blogPost">
+     
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/08/05/结合ms14068对kerberos协议分析/">结合ms14068对kerberos协议分析</a>
+    </h3>
+  
+
+
+
+    <div class="post-meta">
+        <time datetime="2019-08-05T06:14:23.000Z" itemprop="datePublished" class="post-time">
+  2019-08-05
+</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/内网渗透/">内网渗透</a></li></ul>
+
+
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent" >
+
+    
+           Kerberos协议介绍    什么是SSPI  &emsp;安全支持提供者接口（英语：Security Support Provider Interface，缩写SSPI）是Microsoft Windows操作系统中用于执行各种安全相关操作（如身份验证）的一个Win32 API。 &emsp;SSPI的功能是作为众多安全支持提供程序（SSP）的通用接口：安全支持提供者（Security Support Provider）是可以为应用程序提供一种或多种安全功能包的动态链接库（dynamic-link library）。 
+   Windows常用的SSP  
+ NTLM（Windows NT 3.51中引入）(msv1_0.dll) - 为Windows 2000之前的客户端-服务器域和非域身份验证（SMB/CIFS）提供NTLM质询/响应身份验证。 
+ Kerberos（Windows 2000中引入，Windows Vista中更新为支持AES）(kerberos.dll) - Windows 2000及更高版本中首选的客户端-服务器域相互身份验证。 
+ Negotiate（Windows 2000中引入）(secur32.dll) - Negotiate安全包在Kerberos和NTLM之间进行选择协商选择。Negotiate默认使用Kerberos，当Kerberos不能被身份验证中涉及的某个系统使用时，将使用NTLM。 
+ 摘要SSP（Windows XP中引入）(wdigest.dll) - 在Windows与Kerberos不可用的非Windows系统间提供基于HTTP和SASL身份验证的质询/响应。 
+ 凭据 (CredSSP)（Windows Vista中引入，Windows XP SP3上也可用）(credssp.dll) - 为远程桌面连接提供单点登录（SSO）和网络级身份验证。
+    
+    
+        <a href="/2019/08/05/结合ms14068对kerberos协议分析/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/协议分析/">协议分析</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漏洞分析/">漏洞分析</a></li></ul>
+
+</article>
+
+    </li>
+  
+</ul>
+
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>
+var BLOG_SHARE = {
+    title: "大大黄的博客",
+    pic: "/img/logo.jpg",
+    summary: document.getElementsByName('summary')[0].content,
+    url: "http://lahonja.me/index.html"
+};
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
